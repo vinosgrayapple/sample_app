@@ -7,8 +7,12 @@ require 'rails_helper'
 #       expect(response).to have_http_status(200)
 #     end
 #   end
+
 # end
+
 RSpec.feature "Static pages", :type => :feature do
+  let(:base_title) { "Ruby on Rails Tutorial Sample App" }
+
 describe "Home Page" do 
   scenario "Home page" do
 
@@ -18,7 +22,7 @@ describe "Home Page" do
     scenario "title Home page" do
 
       visit '/static_pages/home'
-      expect(page).to have_title('Home')
+      expect(page).to have_title("#{base_title} | Home")
     end
 
    end
@@ -33,7 +37,7 @@ describe "Help Page" do
 scenario "title Help page" do
 
       visit '/static_pages/help'
-      expect(page).to have_title('Help')
+      expect(page).to have_title("#{base_title} | Help")
     end
 
    end
@@ -49,10 +53,26 @@ describe "About Page" do
 scenario "title About page" do
 
       visit '/static_pages/about'
-      expect(page).to have_title('About Us')
+      expect(page).to have_title("#{base_title} | About Us")
     end
 
    end
+
+   describe "Contact Page" do 
+  scenario "Contact page" do
+
+      visit '/static_pages/contact'
+      expect(page).to have_content('Contact')
+    end
+
+scenario "title Contact page" do
+
+      visit '/static_pages/contact'
+      expect(page).to have_title("#{base_title} | Contact")
+    end
+
+   end
+
 
 
   end
